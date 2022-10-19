@@ -17,8 +17,7 @@ export const PDFViewer = () => {
     console.log(url)
     setState({ src: url });
     try {
-      console.log(res);
-      linkRef.current.click();
+      console.log(res);   
     } catch (e) {
       console.log(e);
     }
@@ -29,6 +28,10 @@ export const PDFViewer = () => {
       requestResponse();
     }
   }, []);
+
+  useEffect(()=> {
+    linkRef.current.click();
+  },[state])
 
   let { filename } = useParams();
   return (
