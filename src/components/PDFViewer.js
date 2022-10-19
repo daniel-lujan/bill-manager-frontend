@@ -13,13 +13,14 @@ export const PDFViewer = () => {
         credentials: "include",
       })
     ).blob();
-    const url = window.URL.createObjectURL(res)
+    const url = window.URL.createObjectURL(res);
+    console.log(url)
     setState({ src: url });
     try {
       console.log(res);
       linkRef.current.click();
     } catch (e) {
-      console.log(e)
+      console.log(e);
     }
   };
 
@@ -31,8 +32,11 @@ export const PDFViewer = () => {
 
   let { filename } = useParams();
   return (
-    <div>
-      {state.src ? <a href={state.src} ref={linkRef} /> : <p>Cargando</p>}
-    </div>
+    <>
+      <a href={state.src ? state.src : "#"} ref={linkRef} />
+      <div className="loadercontainer">
+        <span className="loader"></span>
+      </div>
+    </>
   );
 };
