@@ -109,6 +109,8 @@ hr {
   border: 0;
   border-top: 1px solid var(--color3);
   width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 div.messageblock {
@@ -224,6 +226,7 @@ input.search:focus {
 input.uploadfile {
   display: none;
 }
+
 
 h1 {
   font-size: 20px;
@@ -407,11 +410,93 @@ div.loadercontainer {
   }
 } 
 @keyframes animloader {
-    50% {
-      transform: scale(1) translate(-50%, -50%);
+  50% {
+    transform: scale(1) translate(-50%, -50%);
+  }
 }
+
+div.itembox {
+  display: flex;
+  border-radius: 6px;
+  background-color: var(--color1);
+  padding: 6px;
+  width: fit-content;
+  max-width: 160px;
+  word-wrap: break-word;
+  vertical-align: middle;
 }
-    
+
+div.itembox > p {
+  margin: 0;
+}
+
+div.itembox > svg {
+  color: white;
+  margin-left: 10px;
+  font-size: 19px;
+}
+
+div.itembox >svg:hover {
+  cursor: pointer;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+div.flashmessage {
+  display: flex;
+  border-radius: 16px;
+  padding: 12px;
+  border-style: solid;
+  animation: fadein 400ms;
+}
+
+div.fmwarning {
+  background-color: rgb(74, 51, 30);
+  border-color: rgb(248, 172, 4);
+  border-width: 2px;
+}
+
+div.fmwarning svg {
+  margin-right: 12px;
+  color: rgb(248, 172, 4);
+  animation: blinking 1s ease 0s;
+  animation-iteration-count: infinite;
+}
+
+div.fmwarning p{
+  margin: 0;
+  line-height: 1;
+  color: rgb(248, 172, 4);
+}
+
+div.fmerror {
+  background-color: rgb(54, 15, 35);
+  border-color: rgb(210, 8, 11);
+  border-width: 2px;
+}
+
+div.fmerror svg {
+  margin-right: 12px;
+  color: rgb(210, 8, 11);
+  animation: blinking 1s ease 0s;
+  animation-iteration-count: infinite;
+}
+
+div.fmerror p{
+  margin: 0;
+  line-height: 1;
+  color: rgb(210, 8, 11);
+}
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -945,10 +1030,6 @@ table.bills a {
 }
 
 /* <<- BILLS */
-
-/* ADMIN PANEL ->> */
-
-/* <<- ADMIN PANEL */
 
 /* MENU OPTION ->> */
 

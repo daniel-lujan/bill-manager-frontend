@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPeopleGroup,
@@ -10,6 +11,10 @@ import {
 export const Home = (props) => {
   return (
     <div className="pagecontent home">
+      <Helmet>
+        <title>Menú</title>
+        <link id="favicon" rel="icon" type="image/png" href="home.ico" />
+      </Helmet>
       <a href="/clients">
         <button className="panel">
           <FontAwesomeIcon icon={faPeopleGroup} />

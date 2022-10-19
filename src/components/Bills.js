@@ -6,6 +6,7 @@ import {
   faSortDown,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useRef, useState } from "react";
+import { Helmet } from "react-helmet";
 
 const RESTAPI = process.env.REACT_APP_RESTAPI;
 
@@ -87,6 +88,10 @@ export const Bills = (props) => {
 
   return (
     <div className="pagecontent">
+      <Helmet>
+        <title>Facturas</title>
+        <link rel="icon" type="image/png" href="bills.ico"/>
+      </Helmet>
       <h1 className="page-title">Facturas</h1>
       <div className="bills">
         <div className="container billsdb">

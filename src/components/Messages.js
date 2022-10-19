@@ -1,6 +1,11 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGhost, faServer } from "@fortawesome/free-solid-svg-icons";
+import {
+  faGhost,
+  faServer,
+  faWarning,
+  faXmarkCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
 const PageMessage = (props) => {
   return (
@@ -61,5 +66,27 @@ export const ServerError = (props) => {
       buttonText="Reintentar"
       buttonOnClick={props.onRetry}
     />
+  );
+};
+
+export const Warning = (props) => {
+  return (
+    <div className="flashmessage fmwarning">
+      <p>
+        <FontAwesomeIcon icon={faWarning} />
+        {props.message}
+      </p>
+    </div>
+  );
+};
+
+export const Error = (props) => {
+  return (
+    <div className="flashmessage fmerror">
+      <p>
+        <FontAwesomeIcon icon={faXmarkCircle} />
+        {props.message}
+      </p>
+    </div>
   );
 };

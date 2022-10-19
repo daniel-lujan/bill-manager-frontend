@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { Home } from "./components/Home";
 import { Clients } from "./components/Clients";
 import { Client } from "./components/Client";
@@ -13,12 +14,14 @@ import { PDFViewer } from "./components/PDFViewer";
 import { NewBill } from "./components/NewBill";
 import {
   AdminPanel,
+  FileExtensions,
   Users,
   ChangeSelfPassword,
   CreateUser,
   ResetPassword,
   Roles,
   General,
+  MaxFileSize,
 } from "./components/AdminPanel";
 import { PageNotFound } from "./components/Messages";
 
@@ -48,7 +51,6 @@ const Redirector = (props) => {
     } else {
       setPage("login");
     }
-    console.log(res)
   };
   useEffect(() => {
     request();
@@ -144,7 +146,7 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <Navbar logout={handle_logout} />
       <BrowserRouter>
         <Routes>
@@ -181,7 +183,11 @@ function App() {
               path="changepassword"
               element={<ChangeSelfPassword {...commonProps} />}
             />
-
+            <Route
+              path="fileextensions"
+              element={<FileExtensions {...commonProps} />}
+            />
+            <Route path="filesize" element={<MaxFileSize {...commonProps} />} />
             <Route path="users" element={<Users {...commonProps} />} />
             <Route
               path="createuser"
@@ -202,7 +208,7 @@ function App() {
             path="/bill/:filename"
             element={<Redirector target={<PDFViewer />} />}
           />
-          <Route path="*" element={<PageNotFound/>}/>
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <ConfirmDialog
           display={{ var: dialogDisplay, set: setDialogDisplay }}
@@ -215,7 +221,7 @@ function App() {
           message={notificationMessage}
         />
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 

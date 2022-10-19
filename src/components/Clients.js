@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Helmet } from "react-helmet";
 
 import { ClientsDB } from "./ClientsDB";
 
@@ -44,6 +45,10 @@ export const Clients = (props) => {
 
   return (
     <div className="pagecontent">
+      <Helmet>
+        <title>Clientes</title>
+        <link id="favicon" rel="icon" type="image/png" href="clients.ico" />
+      </Helmet>
       <h1 className="page-title">Clientes</h1>
       <div className="clients">
         <div className="container">

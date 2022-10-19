@@ -1,5 +1,6 @@
 import  React, { useState } from "react";
 import { hash } from "bcryptjs";
+import { Helmet } from "react-helmet";
 
 const RESTAPI = process.env.REACT_APP_RESTAPI;
 const HASHSALT = decodeURIComponent(process.env.REACT_APP_HASHSALT);
@@ -25,11 +26,21 @@ export const Login = (props) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && passw && user) {
+      login()
+    }
+  }
+
   const [user, setUser] = useState("");
   const [passw, setPassw] = useState("");
 
   return (
     <div className="pagecontent">
+      <Helmet>
+        <title>Iniciar Sesión</title>
+        <link id="favicon" rel="icon" type="image/png" href="login.ico"/>
+      </Helmet>
       <h1 className="page-title">Iniciar Sesión</h1>
       <div className="container login">
         <input
@@ -41,6 +52,7 @@ export const Login = (props) => {
         />
         <input
           value={passw}
+          onKeyDown={handleKeyDown}
           onChange={(e) => {
             setPassw(e.target.value);
           }}

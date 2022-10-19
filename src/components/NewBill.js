@@ -42,9 +42,12 @@ export const NewBill = (props) => {
         props.notification("Sólo se permiten archivos .pdf", "error");
         return;
       }
-
-      if ((await uploadFile(selectedFile, bill.ref + ".pdf")).status === 0) {
+      const upload_res = await uploadFile(selectedFile, bill.ref + ".pdf")
+      if (upload_res.status === 0) {
         bill.file = bill.ref + ".pdf";
+      } else {
+        props.notification("No se pudo subir el archivo.", "error")
+        return
       }
     }
     const res = await (
