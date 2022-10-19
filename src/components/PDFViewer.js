@@ -13,11 +13,14 @@ export const PDFViewer = () => {
         credentials: "include",
       })
     ).blob();
-    setState({ src: URL.createObjectURL(res) });
+    const url = window.URL.createObjectURL(res)
+    setState({ src: url });
     try {
       console.log(res);
       linkRef.current.click();
-    } catch (e) {}
+    } catch (e) {
+      console.log(e)
+    }
   };
 
   useEffect(() => {
