@@ -90,3 +90,35 @@ export const Error = (props) => {
     </div>
   );
 };
+
+export const SuccessPage = (props) => {
+  return (
+    <div className="centered" style={props.style}>
+      <div className="screenAlert-icon screenAlert-success animate">
+        <span className="screenAlert-line screenAlert-tip animateSuccessTip"></span>
+        <span className="screenAlert-line screenAlert-long animateSuccessLong"></span>
+        <div className="screenAlert-placeholder"></div>
+        <div className="screenAlert-fix"></div>
+      </div>
+      <h1 className="page-title">{props.title}</h1>
+      <p style={{ color: "white" }}>{props.message}</p>
+    </div>
+  );
+};
+
+export const ErrorPage = (props) => {
+  return (
+    <div className="centered" style={props.style}>
+      <div class="screenAlert-icon screenAlert-error animate">
+        <span class="screenAlert-x-mark">
+          <span class="screenAlert-line screenAlert-left animateXLeft"></span>
+          <span class="screenAlert-line screenAlert-right animateXRight"></span>
+        </span>
+        <div class="screenAlert-placeholder"></div>
+        <div class="screenAlert-fix"></div>
+      </div>
+      <h1 className="page-title">{props.title}</h1>
+      <p style={{color:"white"}}>{props.message}</p>
+    </div>
+  );
+};

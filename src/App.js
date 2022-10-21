@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
 import { Home } from "./components/Home";
 import { Clients } from "./components/Clients";
 import { Client } from "./components/Client";
@@ -10,7 +9,7 @@ import "./App.css";
 import { Navbar } from "./components/Navbar";
 import { ConfirmDialog } from "./components/ConfirmDialog";
 import { Notification } from "./components/Notification";
-import { PDFViewer } from "./components/PDFViewer";
+import { FileDownload } from "./components/FileDownload";
 import { NewBill } from "./components/NewBill";
 import {
   AdminPanel,
@@ -24,6 +23,7 @@ import {
   MaxFileSize,
 } from "./components/AdminPanel";
 import { PageNotFound } from "./components/Messages";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const RESTAPI = process.env.REACT_APP_RESTAPI;
 
@@ -145,8 +145,16 @@ function App() {
     },
   };
 
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        refetchOnWindowFocus: false
+      }
+    }
+  })
+
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Navbar logout={handle_logout} />
       <BrowserRouter>
         <Routes>
@@ -206,7 +214,7 @@ function App() {
           />
           <Route
             path="/bill/:filename"
-            element={<Redirector target={<PDFViewer />} />}
+            element={<Redirector target={<FileDownload />} />}
           />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
@@ -221,7 +229,7 @@ function App() {
           message={notificationMessage}
         />
       </BrowserRouter>
-    </>
+    </QueryClientProvider>
   );
 }
 
