@@ -109,13 +109,13 @@ export const SuccessPage = (props) => {
 export const ErrorPage = (props) => {
   return (
     <div className="centered" style={props.style}>
-      <div class="screenAlert-icon screenAlert-error animate">
-        <span class="screenAlert-x-mark">
-          <span class="screenAlert-line screenAlert-left animateXLeft"></span>
-          <span class="screenAlert-line screenAlert-right animateXRight"></span>
+      <div className="screenAlert-icon screenAlert-error animate">
+        <span className="screenAlert-x-mark">
+          <span className="screenAlert-line screenAlert-left animateXLeft"></span>
+          <span className="screenAlert-line screenAlert-right animateXRight"></span>
         </span>
-        <div class="screenAlert-placeholder"></div>
-        <div class="screenAlert-fix"></div>
+        <div className="screenAlert-placeholder"></div>
+        <div className="screenAlert-fix"></div>
       </div>
       <h1 className="page-title">{props.title}</h1>
       <p style={{color:"white"}}>{props.message}</p>

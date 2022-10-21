@@ -159,7 +159,7 @@ export const Bills = (props) => {
                     <td className="tableButtons">
                       <div>
                         <a
-                          href={bill["file"] ? `/bill/${bill["ref"]}.pdf` : "#"}
+                          href={bill["file"] ? `/bill/${bill["file"]}` : "#"}
                           target={bill["file"] ? "_blank" : "_self"}
                         >
                           <button

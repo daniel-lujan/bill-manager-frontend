@@ -38,13 +38,9 @@ export const NewBill = (props) => {
       client: billSelectedClient._id,
     };
     if (typeof selectedFile.name !== "undefined") {
-      if (getExtension(selectedFile.name) !== ".pdf") {
-        props.notification("Sólo se permiten archivos .pdf", "error");
-        return;
-      }
-      const upload_res = await uploadFile(selectedFile, bill.ref + ".pdf")
+      const upload_res = await uploadFile(selectedFile, billSelectedFile)
       if (upload_res.status === 0) {
-        bill.file = bill.ref + ".pdf";
+        bill.file = upload_res.response
       } else {
         props.notification("No se pudo subir el archivo.", "error")
         return
